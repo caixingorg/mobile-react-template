@@ -12,15 +12,14 @@ const Counter: React.FC = React.memo(() => {
 
   return (
     <div>
-      <h2>{t('counter')}: {count}</h2>
+      <h2>
+        {t('counter')}: {count}
+      </h2>
       <Space wrap>
         <Button onClick={() => dispatch(increment())}>{t('increment')}</Button>
         <Button onClick={() => dispatch(decrement())}>{t('decrement')}</Button>
         <Button onClick={() => dispatch(incrementByAmount(5))}>{t('add5')}</Button>
-        <Button 
-          onClick={() => dispatch(incrementAsync(1))}
-          loading={status === 'loading'}
-        >
+        <Button onClick={() => dispatch(incrementAsync(1))} loading={status === 'loading'}>
           {t('addAsync')}
         </Button>
       </Space>
