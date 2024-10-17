@@ -27,7 +27,7 @@
 
 1. 克隆仓库：
    ```
-   git clone https://github.com/your-username/mobile-react-template.git
+   git clone https://github.com/caixingorg/mobile-react-template.git
    ```
 
 2. 安装依赖：
