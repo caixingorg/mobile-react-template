@@ -1,0 +1,12 @@
+.responsive-font(@min-size: 12px, @max-size: 16px, @min-width: 320px, @max-width: 1200px) {
+    @diff: unit(@max-size - @min-size);
+    font-size: ~"calc(@{min-size} + @{diff} * ((100vw - @{min-width}) / @{max-width} - @{min-width}))";
+    
+    @media (max-width: @min-width) {
+      font-size: @min-size;
+    }
+    
+    @media (min-width: @max-width) {
+      font-size: @max-size;
+    }
+  }
