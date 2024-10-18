@@ -3,12 +3,12 @@ import type { ReportHandler } from 'web-vitals';
 const reportWebVitals = async (onPerfEntry?: ReportHandler) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     try {
-      const webVitals = await import('web-vitals');
-      webVitals.getCLS(onPerfEntry);
-      webVitals.getFID(onPerfEntry);
-      webVitals.getFCP(onPerfEntry);
-      webVitals.getLCP(onPerfEntry);
-      webVitals.getTTFB(onPerfEntry);
+      const { onCLS, onFID, onFCP, onLCP, onTTFB } = await import('web-vitals');
+      onCLS(onPerfEntry);
+      onFID(onPerfEntry);
+      onFCP(onPerfEntry);
+      onLCP(onPerfEntry);
+      onTTFB(onPerfEntry);
     } catch (error) {
       console.error('Error loading web-vitals:', error);
     }

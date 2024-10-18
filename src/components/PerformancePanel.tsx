@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'antd-mobile';
+import { Metric, onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals';
 
 const PerformancePanel: React.FC = () => {
   const [metrics, setMetrics] = useState({
@@ -11,20 +12,15 @@ const PerformancePanel: React.FC = () => {
   });
 
   useEffect(() => {
-    const loadWebVitals = async () => {
-      try {
-        const webVitals = await import('web-vitals');
-        webVitals.getCLS((metric) => setMetrics((prev) => ({ ...prev, cls: metric.value })));
-        webVitals.getFID((metric) => setMetrics((prev) => ({ ...prev, fid: metric.value })));
-        webVitals.getFCP((metric) => setMetrics((prev) => ({ ...prev, fcp: metric.value })));
-        webVitals.getLCP((metric) => setMetrics((prev) => ({ ...prev, lcp: metric.value })));
-        webVitals.getTTFB((metric) => setMetrics((prev) => ({ ...prev, ttfb: metric.value })));
-      } catch (error) {
-        console.error('Failed to load web-vitals', error);
-      }
+    const reportWebVitals = (metric: Metric) => {
+      setMetrics(prev => ({ ...prev, [metric.name.toLowerCase()]: metric.value }));
     };
 
-    loadWebVitals();
+    onCLS(reportWebVitals);
+    onFID(reportWebVitals);
+    onFCP(reportWebVitals);
+    onLCP(reportWebVitals);
+    onTTFB(reportWebVitals);
   }, []);
 
   // ... rest of the component

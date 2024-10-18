@@ -4,10 +4,10 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import routes from "./routes";
 import Navigation from "./components/Navigation";
-import OfflineStatus from "./components/OfflineStatus";
+// import OfflineStatus from "./components/OfflineStatus";
 import { ErrorBoundary } from "./utils/errorHandler";
 import styles from "./App.module.less";
-import { Workbox } from "workbox-window";
+// import { Workbox } from "workbox-window";
 import { csp } from "./utils/security";
 const AppRoutes: React.FC = () => {
   const element = useRoutes(routes);
